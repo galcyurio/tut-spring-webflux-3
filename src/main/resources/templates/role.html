@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>레이스!</title>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <form name="racingForm" id="racingForm" method="post">
+        <div class="form-group">
+          <h2>게임 횟수</h2>
+          <input id="laps" type="number" class="form-control" value="" placeholder="게임횟수를 입력하세요. ex) 5">
+          <h2>이름 입력</h2>
+          <p>(이름마다 콤마로 구분해 주세요.)</p>
+          <textarea id="cars" class="form-control" rows="1"
+                    placeholder="에이군, 비군, 씨군, 디군"></textarea>
+        </div>
+        <div class="submit-button">
+          <button id="submitBtn" class="btn btn-lg btn-primary btn-block" type="button">게임 시작</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul id="results" class="list-group">
+      <template id="result-template">
+        <li class="list-group-item list-group-item-default"></li>
+      </template>
+    </ul>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script src="/js/role.js"></script>
+</body>
+</html>
+
