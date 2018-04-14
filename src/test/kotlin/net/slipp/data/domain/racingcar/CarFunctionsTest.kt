@@ -23,7 +23,7 @@ class CarFunctionsTest {
     @Test
     fun forwardAllTest() {
         val num = 5
-        forwardAll(listOf(car1, car2), num)
+        listOf(car1, car2).forwardAll(num)
 
         verify(car1, times(num)).forward()
         verify(car2, times(num)).forward()

@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
     sc.close()
 
     println("----------------- result ------------------")
-    forwardAll(carList, size)
+    carList.forwardAll(size)
 
     val maxList = findFastest(carList)
     println("${maxList.joinToString { it.name }} 최종 우승했습니다")
