@@ -1,4 +1,4 @@
-package net.slipp.domain.racingcar
+package net.slipp.data.domain.racingcar
 
 fun forwardAll(carList: List<Car>, laps: Int) {
     (1..laps).forEach {

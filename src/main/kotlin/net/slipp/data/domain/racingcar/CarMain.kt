@@ -1,4 +1,4 @@
-package net.slipp.domain.racingcar
+package net.slipp.data.domain.racingcar
 
 import java.util.*
 

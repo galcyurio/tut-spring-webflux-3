@@ -1,6 +1,6 @@
 package com.github.galcyurio
 
-import net.slipp.domain.Person
+import net.slipp.data.domain.Person
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

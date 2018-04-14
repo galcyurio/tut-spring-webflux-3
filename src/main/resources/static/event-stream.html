@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SSE Test</title>
+</head>
+<body>
+
+<script>
+    var source = new EventSource("/event-stream");
+    source.onmessage = function (event) {
+        console.log(event);
+    }
+</script>
+</body>
+</html>

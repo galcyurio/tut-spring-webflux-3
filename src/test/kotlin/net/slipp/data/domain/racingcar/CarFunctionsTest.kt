@@ -1,8 +1,8 @@
 package com.github.galcyurio.racingcar
 
-import net.slipp.domain.racingcar.Car
-import net.slipp.domain.racingcar.findFastest
-import net.slipp.domain.racingcar.forwardAll
+import net.slipp.data.domain.racingcar.Car
+import net.slipp.data.domain.racingcar.findFastest
+import net.slipp.data.domain.racingcar.forwardAll
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
