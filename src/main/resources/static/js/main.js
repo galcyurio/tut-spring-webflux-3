@@ -61,7 +61,7 @@ $(function () {
                 url: '/cars',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    laps: self.$txtLaps.val(),
+                    laps: parseInt(self.$txtLaps.val()),
                     carNames: self.$txtCars.val()
                 }),
                 success: self.onCreateGameSuccess,

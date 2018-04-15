@@ -45,19 +45,16 @@ class CarService {
 
     fun forwardAll(gameId: String, duration: Duration): Flux<HashMap<String, Any>> {
         val game = games[gameId]!!
-        return (1..game.laps)
-            .toFlux()
+        val interval = Flux.interval(duration).take(game.laps.toLong())
+        val flux = (1..game.laps).toFlux()
             .map { lap ->
                 HashMap<String, Any>().apply {
                     put("lap", lap)
-                    put("cars", game.cars)
+                    put("cars", game.cars.forwardAll(1))
                 }
             }
-            .doOnEach {
-                game.cars.forwardAll(1)
-            }
             .delayElements(duration)
-            .take(game.laps.toLong())
-        // TODO: Flux stream 알아보기
+
+        return Flux.zip(interval, flux).map { it.t2 }
     }
 }

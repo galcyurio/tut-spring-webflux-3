@@ -3,7 +3,6 @@ package net.slipp.controller
 import net.slipp.data.domain.racingcar.Car
 import net.slipp.data.domain.racingcar.Game
 import net.slipp.data.domain.racingcar.fromRawCars
-import net.slipp.data.dto.GameDto
 import net.slipp.service.CarService
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
@@ -31,8 +30,8 @@ class CarController(
     }
 
     @PostMapping("")
-    fun createGame(@RequestBody gameDto: GameDto): Mono<Game> {
-        return carService.createGame(gameDto.laps, fromRawCars(gameDto.carNames))
+    fun createGame(@RequestBody gameMap: Map<String, Any>): Mono<Game> {
+        return carService.createGame(gameMap["laps"] as Int, fromRawCars(gameMap["carNames"] as String))
     }
 
     @PostMapping("/{id}/quick-start")
