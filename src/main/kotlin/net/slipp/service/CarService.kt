@@ -53,8 +53,9 @@ class CarService {
                     put("cars", game.cars.forwardAll(1))
                 }
             }
-            .delayElements(duration)
 
+        // TODO: stream 이 멈추지 않고 계속 진행
+        // TODO: 각 결과값이 모두 똑같음
         return Flux.zip(interval, flux).map { it.t2 }
     }
 }

@@ -1,7 +1,8 @@
 $(function () {
-    var self = {
+    let self = {
         game: {},
         isResultViewVisible: false,
+        eventSource: null,
 
         init: function () {
             self.cacheDom();
@@ -30,7 +31,7 @@ $(function () {
         renderCarResult: function () {
             self.$tbodyCarResult.empty();
 
-            var html = Mustache.render(self.templateCarResult, self.game);
+            let html = Mustache.render(self.templateCarResult, self.game);
             self.$tbodyCarResult.append(html);
         },
         renderResultView: function () {
@@ -124,19 +125,36 @@ $(function () {
          * `EventStream`을 통한 시작
          */
         streamStart: function (id) {
-            var eventSource = new EventSource('/cars/' + id + '/stream-start');
-            eventSource.onmessage = self.onStreamStartMessage
+            self.eventSource = new EventSource("/cars/" + id + "/stream-start");
+            self.eventSource.onopen = self.onStreamOpen;
+            self.eventSource.onmessage = self.onStreamMessage;
+            self.eventSource.onerror = self.onStreamError;
+        },
+
+        /**
+         * `EventStream` Open
+         */
+        onStreamOpen: function () {
+            console.log("onStreamOpen");
         },
 
         /**
          * `EventStream` 을 통해 메세지 받음
          */
-        onStreamStartMessage: function (event) {
+        onStreamMessage: function (event) {
             self.game = JSON.parse(event.data);
             self.isResultViewVisible = true;
-            console.log("streamStart", self.game);
+            console.log("onStreamMessage", self.game);
 
             self.renderAll();
+        },
+
+        /**
+         * `EventStream` 에러
+         */
+        onStreamError: function() {
+            console.log("onStreamError");
+            self.eventSource.close();
         }
     };
 
